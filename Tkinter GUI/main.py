@@ -42,7 +42,7 @@ any_input.grid(column=3, row=3)
 any_input.get() # Returns the entry's string.
 
 
-window.mainloop() # mainloop yaptıklarımızın çıktısını almamız için temel yapı.
+window.mainloop() # mainloop for the screen output.
 
 """"
 Tkinter layout 
