@@ -11,6 +11,7 @@ SHORT_BREAK_MIN = 5
 LONG_BREAK_MIN = 20
 reps = 0
 timer = None
+s_count = 0
 
 
 def reset_timer():
@@ -20,25 +21,31 @@ def reset_timer():
     check_mark_label.config(bg=YELLOW)
     global reps
     reps = 0
+    global s_count
+    s_count = 0
 
 
 def start_timer():
-    global reps
-    reps += 1
+    global s_count
+    s_count += 1
+    if s_count == 1:
+        global reps
+        reps += 1
 
-    work_sec = WORK_MIN * 60
-    short_break = SHORT_BREAK_MIN * 60
-    long_break = LONG_BREAK_MIN * 60
+        work_sec = WORK_MIN * 60
+        short_break = SHORT_BREAK_MIN * 60
+        long_break = LONG_BREAK_MIN * 60
 
-    if reps % 8 == 0:
-        count_down(long_break)
-        time_label.config(text="Break", fg=RED)
-    elif reps % 2 == 0:
-        count_down(short_break)
-        time_label.config(text="Break", fg=PINK)
-    else:
-        count_down(work_sec)
-        time_label.config(text="Work", fg=GREEN)
+        if reps % 8 == 0:
+            count_down(long_break)
+            time_label.config(text="Break", fg=RED)
+        elif reps % 2 == 0:
+            count_down(short_break)
+            time_label.config(text="Break", fg=PINK)
+        else:
+            count_down(work_sec)
+            time_label.config(text="Work", fg=GREEN)
+
 
 
 def count_down(count):
