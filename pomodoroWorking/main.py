@@ -1,7 +1,6 @@
 from tkinter import *
 import math
 
-# ---------------------------- CONSTANTS ------------------------------- #
 PINK = "#e2979c"
 RED = "#e7305b"
 GREEN = "#9bdeac"
@@ -12,9 +11,9 @@ SHORT_BREAK_MIN = 5
 LONG_BREAK_MIN = 20
 reps = 0
 timer = None
+s_count = 0
 
 
-# ---------------------------- TIMER RESET ----------------------------------- #
 def reset_timer():
     window.after_cancel(timer)
     canvas.itemconfig(timer_text, text="00:00")
@@ -22,29 +21,33 @@ def reset_timer():
     check_mark_label.config(bg=YELLOW)
     global reps
     reps = 0
+    global s_count
+    s_count = 0
 
 
-# ---------------------------- TIMER MECHANISM ------------------------------- #
 def start_timer():
-    global reps
-    reps += 1
+    global s_count
+    s_count += 1
+    if s_count == 1:
+        global reps
+        reps += 1
 
-    work_sec = WORK_MIN * 60
-    short_break = SHORT_BREAK_MIN * 60
-    long_break = LONG_BREAK_MIN * 60
+        work_sec = WORK_MIN * 60
+        short_break = SHORT_BREAK_MIN * 60
+        long_break = LONG_BREAK_MIN * 60
 
-    if reps % 8 == 0:
-        count_down(long_break)
-        time_label.config(text="Break", fg=RED)
-    elif reps % 2 == 0:
-        count_down(short_break)
-        time_label.config(text="Break", fg=PINK)
-    else:
-        count_down(work_sec)
-        time_label.config(text="Work", fg=GREEN)
+        if reps % 8 == 0:
+            count_down(long_break)
+            time_label.config(text="Break", fg=RED)
+        elif reps % 2 == 0:
+            count_down(short_break)
+            time_label.config(text="Break", fg=PINK)
+        else:
+            count_down(work_sec)
+            time_label.config(text="Work", fg=GREEN)
 
 
-# ---------------------------- COUNTDOWN MECHANISM ------------------------------- #
+
 def count_down(count):
 
     count_min = math.floor(count / 60) # math.floor() method rounds a number down the nearest int.
@@ -72,7 +75,6 @@ def count_down(count):
 The after() method calls the callback function once after a delay milliseconds (ms) within Tkinter main loop.
 """
 
-# ---------------------------- UI SETUP ------------------------------- #
 
 window = Tk()
 window.title("Pomodoro Working Technique")
@@ -97,8 +99,5 @@ check_mark_label = Label(bg=YELLOW, fg=GREEN)
 check_mark_label.grid(column=1, row=3)
 window.mainloop()
 
-"""
-for instance **kw : text, background color etc.
-*args means positional arguments
-"""
+
 
