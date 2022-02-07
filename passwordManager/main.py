@@ -2,24 +2,33 @@ from tkinter import *
 from tkinter import messagebox
 from random import choice, randint, shuffle
 import pyperclip
+password_count = 0
 
 
 # ---------------------------- PASSWORD GENERATOR ------------------------------- #
 def generate_password():
-    letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
-    numbers = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
-    symbols = ['!', '#', '$', '%', '&', '(', ')', '*', '+']
 
-    password_letters = [choice(letters) for _ in range(randint(8, 10))]
-    password_symbols = [choice(symbols) for _ in range(randint(2, 4))]
-    password_numbers = [choice(numbers) for _ in range(randint(2, 4))]
+    global password_count
+    password_count += 1
 
-    password_list = password_letters + password_symbols + password_numbers
-    shuffle(password_list) # shuffle method mixed the letter,symbols and numbers.
+    if password_count > 0:
+        password_entry.delete(0, END)
+        letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't',
+                   'u', 'v', 'w', 'x', 'y', 'z', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N',
+                   'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
+        numbers = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
+        symbols = ['!', '#', '$', '%', '&', '(', ')', '*', '+']
 
-    password = "".join(password_list)
-    password_entry.insert(0, password)
-    pyperclip.copy(password) # pyperclip is ensures automatically copying.
+        password_letters = [choice(letters) for _ in range(randint(8, 10))]
+        password_symbols = [choice(symbols) for _ in range(randint(2, 4))]
+        password_numbers = [choice(numbers) for _ in range(randint(2, 4))]
+
+        password_list = password_letters + password_symbols + password_numbers
+        shuffle(password_list)  # shuffle method mixed the letter,symbols and numbers.
+
+        password = "".join(password_list)
+        password_entry.insert(0, password)
+        pyperclip.copy(password)  # pyperclip is ensures automatically copying.
 
 
 # ---------------------------- SAVE PASSWORD ------------------------------- #
@@ -30,7 +39,7 @@ def save():
     password = password_entry.get()
 
     if len(website) == 0 or len(email) == 0 or len(password) == 0:
-        messagebox.showinfo(title="Ooppss!!!!", message="Please don't leave any fields empty!")
+        messagebox.showinfo(title="Ooppttss!!!!", message="Please don't leave any fields empty!")
     else:
         is_ok = messagebox.askokcancel(title=website, message=f"These are the details entered : \nEmail: {email} "
                                                             f"\nPassword: {password} \nIs it ok to save?")
