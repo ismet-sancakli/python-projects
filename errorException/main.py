@@ -1,4 +1,3 @@
-# FileNotFound
 """
 try:
     file = open("a_file.txt")
@@ -17,6 +16,7 @@ finally:
     print("File was closed")
 
 
+# Raising my error
 height = float(input("Height : "))
 weight = float(input("Weight : "))
 if height > 3:
@@ -28,8 +28,6 @@ print(bmi)
 
 fruits = ["Apple", "Pear", "Orange"]
 
-
-#TODO: Catch the exception and make sure the code runs without crashing.
 def make_pie(index):
     try:
         fruit = fruits[index]
