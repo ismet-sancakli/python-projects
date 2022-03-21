@@ -28,6 +28,11 @@ print(bmi)
 
 fruits = ["Apple", "Pear", "Orange"]
 
+<<<<<<< Updated upstream
+=======
+
+
+>>>>>>> Stashed changes
 def make_pie(index):
     try:
         fruit = fruits[index]

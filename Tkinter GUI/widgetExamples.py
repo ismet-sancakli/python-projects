@@ -5,15 +5,12 @@ window.title("Widget Example")
 window.minsize(height=500, width=500)
 
 # Labels
-
 label = Label(text="This is old text.")
 label.config(text="This is new text.")
 label.pack()
 
 
 # Button
-
-
 def action():
     print("Do something")
 
@@ -22,7 +19,6 @@ button = Button(text="Click Me", command=action)
 button.pack()
 
 # Entries
-
 entry = Entry(width=30)
 # Add some text to begin with
 entry.insert(END, string="Something")
@@ -31,7 +27,6 @@ print(entry.get())
 entry.pack()
 
 # Text
-
 text = Text(width=30, height=5)
 # Puts cursor in textbox
 text.focus()
@@ -42,8 +37,6 @@ print(text.get("1.0", END)) # 1.0 means: Text starting from the 1 line with 0 ch
 text.pack()
 
 # Spinbox
-
-
 def spinbox_used():
     print(spinbox.get())
 
@@ -62,8 +55,6 @@ scale = Scale(from_=0, to=100, width=20, command=scale_used)
 scale.pack()
 
 # Checkbutton
-
-
 def checkbutton_used():
     # Prints 1 if On button checked, otherwise 0.
     print(checked_state.get())
@@ -75,10 +66,7 @@ checkbutton = Checkbutton(text="Is On?", variable=checked_state, command=checkbu
 checkbutton.pack()
 
 
-
 # Radiobutton
-
-
 def radio_used():
     print(radio_state.get())
 
