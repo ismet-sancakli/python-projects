@@ -2,16 +2,16 @@ import requests
 from datetime import datetime
 import os
 
-USERNAME = "Ismet"
-PASSWORD = "workoutTracking#51"
+USERNAME = "Your username"
+PASSWORD = "Your password"
 
-GENDER = "male"
-WEIGHT_KG = 82
-HEIGHT_CM = 187
-AGE = 24
+GENDER = YOUR GENDER        
+WEIGHT_KG = YOUR WEIGHT
+HEIGHT_CM = YOUR HEIGHT
+AGE = YOUR AGE
 
-APP_ID = "546acc44"
-API_KEY = "de044c88b76aeecdca50bd5355777a2a"
+APP_ID = "Your APP ID"
+API_KEY = "Your API Key"
 
 
 exercise_endpoint = "https://trackapi.nutritionix.com/v2/natural/exercise"
