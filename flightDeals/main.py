@@ -11,12 +11,7 @@ notification_manager = NotificationManager()
 
 ORIGIN_CITY_IATA = "LON"
 
-#  5. In main.py check if sheet_data contains any values for the "iataCode" key.
-#  If not, then the IATA Codes column is empty in the Google Sheet.
-#  In this case, pass each city name in sheet_data one-by-one
-#  to the FlightSearch class to get the corresponding IATA code
-#  for that city using the Flight Search API.
-#  You should use the code you get back to update the sheet_data dictionary.
+
 if sheet_data[0]["iataCode"] == "":
 
     for row in sheet_data:
@@ -42,5 +37,3 @@ for destination in sheet_data:
             message=f"Low price alert! Only €{flight.price} to fly from {flight.origin_city}-{flight.origin_airport}\
              to {flight.destination_city}-{flight.destination_airport}, from {flight.out_date} to {flight.return_date}."
         )
-
-
