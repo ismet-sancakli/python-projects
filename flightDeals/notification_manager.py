@@ -1,9 +1,9 @@
 from twilio.rest import Client
 
-TWILIO_SID = "ACfe7c16fc27293c506866f6562ca47079"
-TWILIO_AUTH_TOKEN = "136a9f34078fd6b2c577827d12d64d87"
-TWILIO_VIRTUAL_NUMBER = "+17579097480"
-TWILIO_VERIFIED_NUMBER = "YOUR TWILIO VERIFIED NUMBER"
+TWILIO_SID = "Your Twilio SID"
+TWILIO_AUTH_TOKEN = "Your Twilio Token"
+TWILIO_VIRTUAL_NUMBER = "Your Twilio Virtual Number"
+TWILIO_VERIFIED_NUMBER = "Your Twilio Verified Number"
 
 
 #This class is responsible for sending notifications with the deal flight details.
