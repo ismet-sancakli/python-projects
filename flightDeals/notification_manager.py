@@ -1,12 +1,14 @@
+import smtplib
 from twilio.rest import Client
 
-TWILIO_SID = "ACfe7c16fc27293c506866f6562ca47079"
-TWILIO_AUTH_TOKEN = "136a9f34078fd6b2c577827d12d64d87"
-TWILIO_VIRTUAL_NUMBER = "+17579097480"
+TWILIO_SID = "YOUR TWILIO SID"
+TWILIO_AUTH_TOKEN = "YOUR TWILIO AUTHENTICATION TOKEN"
+TWILIO_VIRTUAL_NUMBER = "YOUR VIRTUAL TWILIO NUMBER"
 TWILIO_VERIFIED_NUMBER = "YOUR TWILIO VERIFIED NUMBER"
+EMAIL_PROVIDER_SMTP_ADDRESS = "smtp.gmail.com"
+MY_EMAIL = "YOUR EMAIL ADDRESS"
+MY_PASSWORD = "YOUR EMAIL PASSWORD"
 
-
-#This class is responsible for sending notifications with the deal flight details.
 
 class NotificationManager:
 
@@ -19,5 +21,15 @@ class NotificationManager:
             from_=TWILIO_VIRTUAL_NUMBER,
             to=TWILIO_VERIFIED_NUMBER,
         )
-        # Prints if successfully sent.
         print(message.sid)
+
+    def send_emails(self, emails, message, google_flight_link):
+        with smtplib.SMTP(EMAIL_PROVIDER_SMTP_ADDRESS) as connection:
+            connection.starttls()
+            connection.login(MY_EMAIL, MY_PASSWORD)
+            for email in emails:
+                connection.sendmail(
+                    from_addr=MY_EMAIL,
+                    to_addrs=email,
+                    msg=f"Subject:New Low Price Flight!\n\n{message}\n{google_flight_link}".encode('utf-8')
+                )
